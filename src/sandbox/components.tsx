@@ -5,16 +5,27 @@ interface Props {
   users: { id: number; name: string }[];
 }
 
-export const UnnamedMemoized = memo<Props>(({ name }) => (
+const Content = memo<Props>(({ name, users }) => (
   <div>
     <h1>Hello {name}!</h1>
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
   </div>
 ));
 
-export const DisplayNamedMemoized = memo<Props>(({ name }) => (
-  <div>
-    <h1>Hello {name}!</h1>
-  </div>
+export const UnnamedMemoized = memo<Props>(({ name, users }) => (
+  <Content name={name} users={users} />
+));
+
+export const DisplayNamedMemoized = memo<Props>(({ name, users }) => (
+  <Content name={name} users={users} />
 ));
 
 DisplayNamedMemoized.displayName = 'DisplayNamedMemoized';
+
+export function NamedNonMemoized({ name, users }: Props) {
+  return <Content name={name} users={users} />;
+}

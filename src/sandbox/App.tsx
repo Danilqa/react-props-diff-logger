@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useReducer, useState } from 'react';
 import { withPropsDiffLogger } from '../with-props-diff-logger.tsx';
 import { UnnamedMemoized } from './components.tsx';
 
@@ -17,6 +17,8 @@ function App() {
     { id: 2, name: 'Jane Doe' }
   ]);
 
+  const [, rerenderParent] = useReducer((prevCount) => prevCount + 1, 0);
+
   const onClickUpdate = useCallback(() => {
     setRandomData((prevData) => [
       ...prevData,
@@ -26,9 +28,10 @@ function App() {
 
   return (
     <>
-      <h1>Vite + React</h1>
+      <h1>Sandbox</h1>
       <LoggedUnnamedMemoized name={String(count)} users={randomData} />
       <div className="card">
+        <button onClick={rerenderParent}>rerender parent</button><br/>
         <button onClick={() => setCount2((prevCount) => prevCount + 1)}>
           count is {count}
         </button>
@@ -37,9 +40,6 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }

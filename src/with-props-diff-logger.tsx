@@ -1,5 +1,4 @@
 import type { ComponentType } from 'react';
-import { useRef } from 'react';
 
 import { getStyledLabel, log } from './lib/logger';
 import { getShallowDiff } from './lib/shallow-diff';
@@ -9,17 +8,16 @@ export function withPropsDiffLogger<T extends object>(
   Component: ComponentType<T>,
   name?: string
 ) {
-  let prevProps: T | object = {};
+  let prevProps: T | undefined;
+  let isInitialized = false;
 
   const componentName = name || Component.displayName || Component.name;
 
-  const wasInitialized = useRef(false);
-
   return function PropsDiffLogger(props: T) {
-    const differences = getShallowDiff(prevProps, props);
+    const differences = getShallowDiff(prevProps || {}, props);
     const now = getLocaleTimeWithMs();
 
-    const actionTitle = wasInitialized.current ? 'initialized' : 'changed';
+    const actionTitle = isInitialized ? 'props changed' : 'initialized';
 
     if (differences.length) {
       console.group(`[${componentName}] ${actionTitle} @ ${now}`);
@@ -31,8 +29,8 @@ export function withPropsDiffLogger<T extends object>(
       console.log(`[${componentName}] no props changed @ ${now}`);
     }
 
-    if (!wasInitialized.current) {
-      wasInitialized.current = true;
+    if (!isInitialized) {
+      isInitialized = true;
     }
 
     prevProps = { ...props };

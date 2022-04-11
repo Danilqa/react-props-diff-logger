@@ -20,10 +20,10 @@ devDependencies:
     specifier: 17.7.0
     version: 17.7.0
   '@testing-library/jest-dom':
-    specifier: ^6.1.4
+    specifier: 6.1.4
     version: 6.1.4(vitest@0.34.6)
   '@testing-library/react':
-    specifier: ^14.1.2
+    specifier: 14.1.2
     version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
   '@types/react':
     specifier: 18.2.15
@@ -65,7 +65,7 @@ devDependencies:
     specifier: 8.0.3
     version: 8.0.3
   jsdom:
-    specifier: ^22.1.0
+    specifier: 22.1.0
     version: 22.1.0
   typescript:
     specifier: 5.0.2

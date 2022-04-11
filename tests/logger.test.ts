@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { DiffKind } from '../src/lib/shallow-diff';
 import { log } from '../src/lib/logger';
 
@@ -6,10 +6,7 @@ describe('Logger', () => {
   describe('#log', () => {
     beforeEach(() => {
       vi.spyOn(console, 'log');
-    });
-
-    afterEach(() => {
-      vi.restoreAllMocks();
+      return () => vi.restoreAllMocks();
     });
 
     it('should log correctly for an EDITED diff kind', () => {
