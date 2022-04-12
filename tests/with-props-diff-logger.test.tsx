@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, SpyInstance } from 'vitest';
-import { withPropsDiffLogger } from '../src/with-props-diff-logger.tsx';
+import { withPropsDiffLogger } from '../src/props-diff-logger.tsx';
 
 interface Props {
   prop: string;

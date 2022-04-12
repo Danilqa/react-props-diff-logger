@@ -2,16 +2,19 @@
   "name": "react-props-diff-logger",
   "private": true,
   "version": "0.1.0",
-  "type": "module",
   "scripts": {
     "dev:sandbox": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build --config vite.lib.config.ts && node ./dev/scripts/copy-files.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "preview": "vite preview",
     "prepare": "husky install"
   },
+  "main": "./props-diff-logger.umd.js",
+  "module": "./props-diff-logger.es.js",
+  "typings": "./props-diff-logger.d.ts",
+  "types": "./props-diff-logger.d.ts",
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16"
@@ -37,6 +40,7 @@
     "jsdom": "22.1.0",
     "typescript": "5.0.2",
     "vite": "4.4.5",
+    "vite-plugin-dts": "3.6.4",
     "vitest": "0.34.6"
   }
 }

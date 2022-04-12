@@ -21,8 +21,10 @@ export function withPropsDiffLogger<T extends object>(
 
     if (differences.length) {
       console.group(`[${componentName}] ${actionTitle} @ ${now}`);
-      console.log(...getStyledLabel('before:', '#636e72'), prevProps);
-      console.log(...getStyledLabel('after:', '#00b894'), props);
+      console.log(...getStyledLabel('before:', '#636e72'));
+      console.log(prevProps);
+      console.log(...getStyledLabel('after:', '#00b894'));
+      console.log(props);
       log(differences);
       console.groupEnd();
     } else {

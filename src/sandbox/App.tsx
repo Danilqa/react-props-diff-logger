@@ -1,5 +1,5 @@
-import { useCallback, useReducer, useState } from 'react';
-import { withPropsDiffLogger } from '../with-props-diff-logger.tsx';
+import { useReducer, useState } from 'react';
+import { withPropsDiffLogger } from '../props-diff-logger.tsx';
 import { UnnamedMemoized } from './components.tsx';
 
 import './App.css';
@@ -10,8 +10,8 @@ const LoggedUnnamedMemoized = withPropsDiffLogger(
 );
 
 function App() {
-  const [count2, setCount2] = useState(0);
   const [count, setCount] = useState(0);
+  const [count2, setCount2] = useState(0);
   const [randomData, setRandomData] = useState([
     { id: 1, name: 'John Doe' },
     { id: 2, name: 'Jane Doe' }
@@ -19,21 +19,25 @@ function App() {
 
   const [, rerenderParent] = useReducer((prevCount) => prevCount + 1, 0);
 
-  const onClickUpdate = useCallback(() => {
+  function onClickUpdate() {
     setRandomData((prevData) => [
       ...prevData,
       { id: new Date().getTime(), name: new Date().getTime().toString() }
     ]);
-  }, []);
+  }
 
   return (
     <>
       <h1>Sandbox</h1>
       <LoggedUnnamedMemoized name={String(count)} users={randomData} />
       <div className="card">
-        <button onClick={rerenderParent}>rerender parent</button><br/>
-        <button onClick={() => setCount2((prevCount) => prevCount + 1)}>
+        <button onClick={rerenderParent}>rerender parent</button>
+        <br />
+        <button onClick={() => setCount((prevCount) => prevCount + 1)}>
           count is {count}
+        </button>
+        <button onClick={() => setCount2((prevCount) => prevCount + 1)}>
+          the 2-nd count is {count2}
         </button>
         <button onClick={onClickUpdate}>rerender</button>
         <p>
