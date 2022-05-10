@@ -1,6 +1,8 @@
 ![react props diff logger](.github/assets/background.jpg 'React Props Diff Logger')
 
-Helps you debug React components by logging props changes.
+<p align="center">
+  Helps you debug React components by logging props changes.
+</p>
 
 ## Installation
 
@@ -51,3 +53,7 @@ By default, the function's name or `displayName` is used. To set or override the
 ```ts
 const MyComponent = withPropsDiffLogger(_MyComponent, 'MyCustomName');
 ```
+
+<p align="center">
+Support the project by giving it a star! ⭐
+</p>
