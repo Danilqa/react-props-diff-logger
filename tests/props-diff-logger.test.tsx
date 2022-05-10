@@ -43,7 +43,7 @@ describe('withPropsDiffLogger', () => {
     rerender(<MockComponent prop="updated" />);
 
     expect(console.group).toHaveBeenCalled();
-    expect(getLoggedMessage(5, log)).toMatch('[MockComponent] props changed @');
+    expect(getLoggedMessage(7, log)).toMatch('[MockComponent] props changed @');
     expect(console.groupEnd).toHaveBeenCalled();
   });
 
@@ -58,7 +58,7 @@ describe('withPropsDiffLogger', () => {
     expect(log).not.toHaveBeenCalledWith(
       expect.stringMatching(/\[MockComponent\] props changed @/)
     );
-    expect(getLoggedMessage(5, log)).toMatch(
+    expect(getLoggedMessage(7, log)).toMatch(
       '[MockComponent] no props changed'
     );
   });
