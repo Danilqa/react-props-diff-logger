@@ -15,6 +15,14 @@
   "module": "./props-diff-logger.es.js",
   "typings": "./props-diff-logger.d.ts",
   "types": "./props-diff-logger.d.ts",
+  "bugs": {
+    "url": "https://github.com/Danilqa/react-props-diff-logger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Danilqa/react-props-diff-logger"
+  },
+  "homepage": "https://github.com/Danilqa/react-props-diff-logger",
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16"
