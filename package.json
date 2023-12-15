@@ -1,6 +1,6 @@
 {
   "name": "react-props-diff-logger",
-  "private": true,
+  "description": "Helps you debug React components by logging props changes",
   "version": "0.1.0",
   "scripts": {
     "dev:sandbox": "vite",
@@ -15,6 +15,13 @@
   "module": "./props-diff-logger.es.js",
   "typings": "./props-diff-logger.d.ts",
   "types": "./props-diff-logger.d.ts",
+  "keywords": [
+    "react",
+    "logger",
+    "props",
+    "rerender"
+  ],
+  "author": "Daniil Sitdikov <hello.boriskas@gmail.com>",
   "bugs": {
     "url": "https://github.com/Danilqa/react-props-diff-logger/issues"
   },
